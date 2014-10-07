@@ -13,7 +13,7 @@
 	<mvc:annotation-driven />
 	<mvc:default-servlet-handler />
 	<context:annotation-config />
-	<context:component-scan base-package="com.wheretact.wheretact" />
+	<context:component-scan base-package="com.wheretact" />
 	
 
  
