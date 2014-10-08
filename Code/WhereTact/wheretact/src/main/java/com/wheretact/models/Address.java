@@ -25,7 +25,7 @@ public class Address {
 			return addressId;	
 	}
 	
-	public void setAddressId(UUID addressID){
+	public void setAddressId(UUID addressId){
 		this.addressId = addressId; 
 	}
 	
