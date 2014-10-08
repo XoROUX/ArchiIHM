@@ -3,54 +3,97 @@ package com.wheretact.models;
 import java.util.HashMap;
 import java.util.UUID;
 
+
+/***
+ * TO DO : 
+ * 		-	Attributs Contact ok
+ * 		-	Constructeur -> génère un randomUUID()! a verifier
+ * 		-	Getters ok
+ * 		-	Setters ok
+ * 
+ * 		-	Equals gné??
+ */
+
+/**
+ * Contact class
+ * Contains all the information of a given contact.
+ * 
+ * @author Emmanuelle, Pierre
+ *
+ */
 public class Contact {
 
 	private UUID contactId;
 	private Address billingAddress;
-	private HashMap<String, Address> addressList;
-	
-	
-	
-	/***
-	 * TO DO : 
-	 * 		-	Attributs Contact ok
-	 * 		-	Constructeur -> génère un randomUUID()! a verifier
-	 * 		-	Getters ok
-	 * 		-	Setters ok
-	 * 
-	 * 		-	Equals gné??
-	 */
-	
-	private Integer phoneNumbers;
-	private String emails;
+	private HashMap<String, Address> addressList;	
+	private Integer phoneNumber;
+	private String email;
 	private String firstname;
 	private String lastname;
 	private String birthdate; 
 	
+	/**
+	 * Constructor for Contact Class
+	 * @param contactId
+	 * @param birthdate
+	 * @param email
+	 * @param firstname
+	 * @param lastname
+	 * @param phoneNumber
+	 */
+	public Contact(UUID contactId,String birthdate,String email,String firstname, String lastname,Integer phoneNumber) {
+		
+		this.contactId = contactId; 
+		this.birthdate = birthdate;
+		this.email = email;
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.phoneNumber = phoneNumber;
+	}
 	
+	
+	/* GETTERS & SETTERS */
+	
+	public HashMap<String, Address> getAddressList() {
+		return addressList;
+	}
+	
+	public void setAddressList(HashMap<String, Address> myAddressList) { // A VERIFIER
+		addressList = myAddressList;
+	}
+	
+	public void addContactAddress(String key, Address value){
+		addressList.put(key, value);
+	}
+	
+	public void removeContactAddress(String key){
+		if(addressList.containsKey(key)){
+			addressList.remove(key);
+		}
+	}
+	/* On ne permet pas de modifier l'id
 	public void setContactId(UUID contactId){
 		this.contactId = contactId; 
-	}
+	}*/
 	
 	public UUID getContactId(){
 		return contactId; 
 	}
-	
-	
+		
 	public Integer getPhoneNumbers() {
-		return phoneNumbers;
+		return phoneNumber;
 	}
 
 	public void setPhoneNumbers(Integer phones) {
-		this.phoneNumbers = phones;
+		this.phoneNumber = phones;
 	}
 
 	public String getEmails() {
-		return emails;
+		return email;
 	}
 
 	public void setEmails(String emails) {
-		this.emails = emails;
+		this.email = emails;
 	}
 
 	public Address getBillingAddress() {
@@ -60,15 +103,6 @@ public class Contact {
 	public void setBillingAddress(Address billingAddress) {
 		this.billingAddress = billingAddress; 
 		
-	}
-	
-	
-	public HashMap<String, Address> getAddressList() {
-		return addressList;
-	}
-	
-	public void setAddressList(String key,Address value) { // A VERIFIER
-		addressList.put(key, value);
 	}
 	
 	public String getFirstname() {
@@ -96,24 +130,27 @@ public class Contact {
 	}
 
 	
-	public static Contact builder(UUID contactId,String birthdate,String emails,String firstname, String lastname,Integer phoneNumbers) {
-		
-		Contact newContact = new Contact();
-		
-		newContact.setContactId(contactId.randomUUID()); 
-		newContact.setBirthdate(birthdate);
-		newContact.setEmails(emails);
-		newContact.setFirstname(firstname);
-		newContact.setLastname(lastname);
-		newContact.setPhoneNumbers(phoneNumbers);
-		
-		
-		return newContact;
+	/**
+	 * Equals method used to determine if two Contacts are the same
+	 * @param otherContact : object of same type to compare with
+	 * @return : true if same object, same Id, or same email address
+	 */
+	public boolean equals(Contact otherContact){
+		if(this == otherContact || contactId.equals(otherContact.contactId)){
+			return true;
+		}
+		else if(email.equals(otherContact.email)){
+			return true;
+		}
+		return false;
 	}
 
-	
-	
-	
-	
+
+	@Override
+	public String toString() {
+		return "Contact [\n\tcontactId=" + contactId + "\n\t phoneNumber=" + phoneNumber + "\n\t email=" + email
+				+ "\n\t firstname=" + firstname + ", lastname=" + lastname
+				+ "\n\t birthdate=" + birthdate + "\n]";
+	}	
 	
 }

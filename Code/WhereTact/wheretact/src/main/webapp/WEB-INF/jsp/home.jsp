@@ -8,5 +8,9 @@
 </head>
 <body>
 <h1>Where Tact Home</h1>
+<br><br>
+<P>  The time on the server is ${serverTime}. </P>
+<br><br>
+<p> ${randomUserInfo} </p>
 </body>
 </html>
