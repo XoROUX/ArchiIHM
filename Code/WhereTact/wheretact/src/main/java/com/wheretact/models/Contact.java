@@ -26,7 +26,7 @@ public class Contact {
 	private UUID contactId;
 	private Address billingAddress;
 	private HashMap<String, Address> addressList;	
-	private Integer phoneNumber;
+	private int phoneNumber;
 	private String email;
 	private String firstname;
 	private String lastname;

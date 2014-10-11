@@ -30,25 +30,21 @@ public class ContactService implements WhereTactServiceInterface<Contact> {
 
 	@Override
 	public int createObject(Contact myObject) {
-		//WhereTactWebDAOFactory.getInstance();
 		return WhereTactWebDAOFactory.getContactDAO().createObject(myObject);
 	}
 
 	@Override
 	public int deleteObject(UUID objectId) {
-		//WhereTactWebDAOFactory.getInstance();
 		return WhereTactWebDAOFactory.getContactDAO().deleteObject(objectId);
 	}
 
 	@Override
 	public int updateObject(Contact myNewObj) {
-		//WhereTactWebDAOFactory.getInstance();
 		return WhereTactWebDAOFactory.getContactDAO().updateObject(myNewObj);
 	}
 
 	@Override
 	public ArrayList<Contact> readAll() {
-		//WhereTactWebDAOFactory.getInstance();
 		//ArrayList<Contact> myArray = (ArrayList<Contact>) WhereTactWebDAOFactory.getContactDAO().readAll();
 		
 		if(this.myDAO.getMapping().size() == 0){
@@ -69,13 +65,11 @@ public class ContactService implements WhereTactServiceInterface<Contact> {
 
 	@Override
 	public HashMap<UUID, Contact> getMapping() {
-		//WhereTactWebDAOFactory.getInstance();
 		return WhereTactWebDAOFactory.getContactDAO().getMapping();
 	}
 
 	@Override
 	public Contact getObjByID(UUID objectId) {
-		//WhereTactWebDAOFactory.getInstance();
 		return WhereTactWebDAOFactory.getContactDAO().getObjByID(objectId);
 	}
 

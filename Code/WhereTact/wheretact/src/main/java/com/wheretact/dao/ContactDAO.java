@@ -94,8 +94,8 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 	@Override
 	public int deleteObject(UUID objectId) {
 		try{
-			if(allContacts.containsKey(objectId.toString())){
-				allContacts.remove(objectId.toString());
+			if(allContacts.containsKey(objectId)){
+				allContacts.remove(objectId);
 				return 0;
 			}
 			
@@ -135,7 +135,14 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 				return new ArrayList<Contact>();
 			}
 			System.out.println("\n\n[ContactDAO][readAll] ******* "+allContacts.values()+"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
-			return (ArrayList<Contact>) allContacts.values();
+
+
+			ArrayList<Contact> returnList = new ArrayList<Contact>();
+			for(Contact a : allContacts.values()){
+				returnList.add(a);
+			}
+			return returnList;
+			
 		}catch(Exception e){
 			return new ArrayList<Contact>();
 		}

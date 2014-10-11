@@ -84,8 +84,8 @@ public class AddressDAO implements WhereTactWebDAOInterface<Address> {
 	@Override
 	public int deleteObject(UUID objectId) {
 		try{
-			if(allAddresses.containsKey(objectId.toString())){
-				allAddresses.remove(objectId.toString());
+			if(allAddresses.containsKey(objectId)){
+				allAddresses.remove(objectId);
 				return 0;
 			}
 			
@@ -121,7 +121,12 @@ public class AddressDAO implements WhereTactWebDAOInterface<Address> {
 			if(allAddresses == null){
 				return new ArrayList<Address>();
 			}
-			return (ArrayList<Address>) allAddresses.values();
+			
+			ArrayList<Address> returnList = new ArrayList<Address>();
+			for(Address a : allAddresses.values()){
+				returnList.add(a);
+			}
+			return returnList;
 		}catch(Exception e){
 			return new ArrayList<Address>();
 		}

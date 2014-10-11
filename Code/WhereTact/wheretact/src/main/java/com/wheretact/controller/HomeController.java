@@ -1,7 +1,8 @@
 package com.wheretact.controller;
 
 import java.text.DateFormat;
-import java.util.Collection;
+import java.util.ArrayList;
+//import java.util.Collection;
 import java.util.Date;
 import java.util.Locale;
 import java.util.UUID;
@@ -30,12 +31,13 @@ public class HomeController {
 		
 		ContactService sampleContacts = new ContactService();
 		
+		/*
 		Collection<Contact> contactList = (Collection<Contact>) sampleContacts.getMapping().values();
 		
 		String myList = new String();
 		myList = "<p>";
 		
-		if(sampleContacts.readAll().size() == 0){
+		if(sampleContacts.getMapping().values().size() == 0){
 			myList += "No elements recieved from service <br>";
 		}
 		else {
@@ -49,6 +51,28 @@ public class HomeController {
 				myList = "There was an error in the list";
 			}
 		}
+		*/
+		
+		ArrayList<Contact> contactList = (ArrayList<Contact>) sampleContacts.readAll();
+		
+		String myList = new String();
+		myList = "<p>";
+		
+		if(sampleContacts.getMapping().values().size() == 0){
+			myList += "No elements recieved from service <br>";
+		}
+		else {
+			try {
+				for(Contact contact : contactList){
+					myList += contact.toString() + "<br>";
+									
+				}
+	
+			}catch(Exception e){
+				myList = "There was an error in the list";
+			}
+		}
+		
 			
 		myList += "</p>";
 		
