@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.UUID;
 
 
-/***
+/*
  * TO DO : 
  * 		-	Attributs Contact ok
  * 		-	Constructeur -> génère un randomUUID()! a verifier
@@ -41,7 +41,7 @@ public class Contact {
 	 * @param lastname
 	 * @param phoneNumber
 	 */
-	public Contact(UUID contactId,String birthdate,String email,String firstname, String lastname,Integer phoneNumber) {
+	public Contact(UUID contactId,String birthdate,String email,String firstname, String lastname,Integer phoneNumber, HashMap<String, Address> addresses, Address billingAddr) {
 		
 		this.contactId = contactId; 
 		this.birthdate = birthdate;
@@ -49,6 +49,13 @@ public class Contact {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.phoneNumber = phoneNumber;
+		if(addresses == null){
+			this.addressList = new HashMap<String, Address>();
+		}
+		else{
+			this.addressList = addresses;
+		}
+		this.billingAddress = billingAddr;
 	}
 	
 	

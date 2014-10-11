@@ -3,7 +3,7 @@ package com.wheretact.models;
 
 import java.util.UUID;
 
-/***
+/*
  * TO DO : 
  * 		-	Attributs Address OK
  * 		-	Constructeur -> génère un randomUUID()! (ok à verifier)
@@ -15,7 +15,13 @@ import java.util.UUID;
  * v1 manu 08/10
  */
 
-
+/**
+ * Address class
+ * Contains all the information of a given address.
+ * 
+ * @author Emmanuelle, Pierre
+ *
+ */
 public class Address {
 
 	private UUID addressId;
