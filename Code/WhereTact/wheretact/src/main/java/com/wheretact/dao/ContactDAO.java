@@ -48,12 +48,6 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 	public static ContactDAO getInstance(){
 		if(instance == null){
 			instance = new ContactDAO();
-			System.out.println("\n\n___________<<< NEW ContactDAO !!! >>>___________\n"+
-					instance.toString()+"\n_______________________________________________\n\n");
-		}
-		else{
-			System.out.println("\n\n___________<<< single ContactDAO >>>___________\n"+
-					instance.toString()+"\n_______________________________________________\n\n");
 		}
 		return instance;
 	}
@@ -66,7 +60,7 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 			sampleContact = new Contact(UUID.randomUUID(), "birthdate", "email", "firstname", "lastname", i, null, null);
 			
 			createObject(sampleContact);
-			System.out.println("STARTING : CONTACT ---> " + sampleContact.toString()+"___________________");
+			//System.out.println("STARTING : CONTACT ---> " + sampleContact.toString()+"___________________");
 		}
 		
 	}
@@ -131,10 +125,10 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 	public List<Contact> readAll() {
 		try{
 			if(allContacts == null){
-				System.out.println("RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+				//System.out.println("RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 				return new ArrayList<Contact>();
 			}
-			System.out.println("\n\n[ContactDAO][readAll] ******* "+allContacts.values()+"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
+			//System.out.println("\n\n[ContactDAO][readAll] ******* "+allContacts.values()+"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
 
 
 			ArrayList<Contact> returnList = new ArrayList<Contact>();

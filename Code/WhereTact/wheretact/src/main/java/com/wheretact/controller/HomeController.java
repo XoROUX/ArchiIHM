@@ -56,25 +56,25 @@ public class HomeController {
 		ArrayList<Contact> contactList = (ArrayList<Contact>) sampleContacts.readAll();
 		
 		String myList = new String();
-		myList = "<p>";
+		myList = "<ul>";
 		
 		if(sampleContacts.getMapping().values().size() == 0){
-			myList += "No elements recieved from service <br>";
+			myList += "<li>No elements recieved from service </li>";
 		}
 		else {
 			try {
 				for(Contact contact : contactList){
-					myList += contact.toString() + "<br>";
+					myList += "<li>" + contact.toString() + "</li>";
 									
 				}
 	
 			}catch(Exception e){
-				myList = "There was an error in the list";
+				myList = "<li>" + "There was an error in the list" + "</li>";
 			}
 		}
 		
 			
-		myList += "</p>";
+		myList += "</ul>";
 		
 		model.addAttribute("myList", myList);
 		/*

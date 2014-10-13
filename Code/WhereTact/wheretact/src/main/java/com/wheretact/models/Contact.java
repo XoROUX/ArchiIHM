@@ -41,7 +41,7 @@ public class Contact {
 	 * @param lastname
 	 * @param phoneNumber
 	 */
-	public Contact(UUID contactId,String birthdate,String email,String firstname, String lastname,Integer phoneNumber, HashMap<String, Address> addresses, Address billingAddr) {
+	public Contact(UUID contactId,String birthdate,String email,String firstname, String lastname,int phoneNumber, HashMap<String, Address> addresses, Address billingAddr) {
 		
 		this.contactId = contactId; 
 		this.birthdate = birthdate;

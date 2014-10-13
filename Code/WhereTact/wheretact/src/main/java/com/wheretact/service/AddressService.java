@@ -20,37 +20,31 @@ public class AddressService implements WhereTactServiceInterface<Address> {
 
 	@Override
 	public int createObject(Address myObject) {
-		//return WhereTactWebDAOFactory.getInstance().getAddressDAO().createObject(myObject);
 		return WhereTactWebDAOFactory.getAddressDAO().createObject(myObject);
 	}
 
 	@Override
 	public int deleteObject(UUID objectId) {
-		//return WhereTactWebDAOFactory.getInstance().getAddressDAO().deleteObject(objectId);
 		return WhereTactWebDAOFactory.getAddressDAO().deleteObject(objectId);
 	}
 
 	@Override
 	public int updateObject(Address myNewObj) {
-		//return WhereTactWebDAOFactory.getInstance().getAddressDAO().updateObject(myNewObj);
 		return WhereTactWebDAOFactory.getAddressDAO().updateObject(myNewObj);
 	}
 
 	@Override
 	public ArrayList<Address> readAll() {
-		//return WhereTactWebDAOFactory.getInstance().getAddressDAO().readAll();
 		return (ArrayList<Address>) WhereTactWebDAOFactory.getAddressDAO().readAll();
 	}
 
 	@Override
 	public HashMap<UUID, Address> getMapping() {
-		//return WhereTactWebDAOFactory.getInstance().getAddressDAO().getMapping();
 		return WhereTactWebDAOFactory.getAddressDAO().getMapping();
 	}
 
 	@Override
 	public Address getObjByID(UUID objectId) {
-		//return WhereTactWebDAOFactory.getInstance().getAddressDAO().getObjByID(objectId);
 		return WhereTactWebDAOFactory.getAddressDAO().getObjByID(objectId);
 	}
 
