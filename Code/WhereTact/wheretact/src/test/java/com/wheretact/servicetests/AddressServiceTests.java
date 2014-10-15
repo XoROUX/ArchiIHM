@@ -25,18 +25,17 @@ public class AddressServiceTests {
 	public void testCreateObject() {
 		AddressService addressServiceOne = new AddressService();
 		UUID addressId = UUID.randomUUID();
-		Address testAddress = new Address(addressId, 1000, "street", "test", "delete", "address", "country");
+		Address testAddress = new Address(null, addressId, 1000, "street", "test", "delete", "address", "country");
 		
 		assertEquals(0, addressServiceOne.createObject(testAddress));
 		assertEquals(true, testAddress.equals(addressServiceOne.getObjByID(addressId)));
-		
 	}
 
 	@Test
 	public void testDeleteObject() {
 		AddressService addressServiceOne = new AddressService();
 		UUID addressId = UUID.randomUUID();
-		Address testAddress = new Address(addressId, 1000, "street", "test", "delete", "address", "country");
+		Address testAddress = new Address(null, addressId, 1000, "street", "test", "delete", "address", "country");
 		
 		assertEquals(0, addressServiceOne.createObject(testAddress));
 		assertEquals(true, testAddress.equals(addressServiceOne.getObjByID(addressId)));
@@ -49,7 +48,7 @@ public class AddressServiceTests {
 	public void testUpdateObject() {
 		AddressService addressServiceOne = new AddressService();
 		UUID addressId = UUID.randomUUID();
-		Address testAddress = new Address(addressId, 1000, "street", "test", "delete", "address", "country");
+		Address testAddress = new Address(null, addressId, 1000, "street", "test", "delete", "address", "country");
 		
 		assertEquals(0, addressServiceOne.createObject(testAddress));
 		assertEquals(true, testAddress.equals(addressServiceOne.getObjByID(addressId)));
@@ -76,7 +75,7 @@ public class AddressServiceTests {
 	public void testReadAll() {
 		AddressService addressServiceOne = new AddressService();
 		UUID addressId = UUID.randomUUID();
-		Address testAddress = new Address(addressId, 1000, "street", "test", "delete", "address", "country");
+		Address testAddress = new Address(null, addressId, 1000, "street", "test", "delete", "address", "country");
 		
 		assertEquals(0, addressServiceOne.createObject(testAddress));
 		
@@ -95,7 +94,7 @@ public class AddressServiceTests {
 		assertNotNull(addressMap);
 		
 		UUID addressId = UUID.randomUUID();
-		Address testAddress = new Address(addressId, 1000, "street", "test", "delete", "address", "country");
+		Address testAddress = new Address(null, addressId, 1000, "street", "test", "delete", "address", "country");
 		assertEquals(0, addressServiceOne.createObject(testAddress));
 		
 		assertNotNull(addressMap.get(addressId));
@@ -105,7 +104,7 @@ public class AddressServiceTests {
 	public void testGetObjByID() {
 		AddressService addressServiceOne = new AddressService();
 		UUID addressId = UUID.randomUUID();
-		Address testAddress = new Address(addressId, 1000, "street", "test", "delete", "address", "country");
+		Address testAddress = new Address(null, addressId, 1000, "street", "test", "delete", "address", "country");
 		
 		assertNull(addressServiceOne.getObjByID(addressId));
 		

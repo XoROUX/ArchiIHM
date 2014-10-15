@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import com.wheretact.business.WhereTactWebDAOInterface;
 import com.wheretact.models.Address;
+import com.wheretact.models.Contact;
 
 
 /***
@@ -32,13 +33,13 @@ import com.wheretact.models.Address;
 public class AddressDAO implements WhereTactWebDAOInterface<Address> {
 
 	private static AddressDAO instance = null;
-	private HashMap<UUID, Address> allAddresses;
+	private static HashMap<UUID, Address> allAddresses;
 	
 	/**
 	 * @Constructor
 	 */
 	private AddressDAO() {
-		this.allAddresses = new HashMap<UUID, Address>();
+		allAddresses = new HashMap<UUID, Address>();
 		start();
 	}
 	
@@ -57,8 +58,57 @@ public class AddressDAO implements WhereTactWebDAOInterface<Address> {
 	 */
 	@Override
 	public void start() {
-		// TODO Write File Reader and set allAddresses HashMap
 		
+		ContactDAO contacts = ContactDAO.getInstance();
+		Address newAddress = null;
+		
+		if(contacts.getMapping().size()>0){
+			for(UUID contactId : contacts.getMapping().keySet()){
+				try {
+					newAddress = new Address(contactId, UUID.randomUUID(), 0, "street", "postCode", "city", "state", "country");
+					createObject(newAddress);
+				
+					linktoContact(contacts.getObjByID(contactId), newAddress, false);
+					
+					newAddress = new Address(contactId, UUID.randomUUID(), 0, "other", "other", "other", "other", "other");
+					createObject(newAddress);
+					
+					linktoContact(contacts.getObjByID(contactId), newAddress, false);
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+	}
+	
+	public void linktoContact(Contact c, Address a, boolean asBillingAddress) throws Exception{
+		if(c == null || a == null) {
+			throw new Exception("Null parameter exception");
+		}
+		
+		a.setContactId(c.getContactId());
+		
+		if(asBillingAddress){
+			c.setBillingAddress(a);
+		}
+		else {
+			c.addContactAddress(a.getAddressId(), a);
+		}
+	}
+	
+	public ArrayList<Address> getContactAddresses(UUID contact) {
+		ArrayList<Address> resultList = new ArrayList<Address>();
+		
+		for(Address iterationAddress : allAddresses.values()){
+			if(iterationAddress.getContactId().equals(contact)){
+				resultList.add(iterationAddress);
+			}
+		}
+		
+		return resultList;
 	}
 	
 	/**

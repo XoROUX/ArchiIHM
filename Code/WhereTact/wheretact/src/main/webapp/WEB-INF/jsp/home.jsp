@@ -12,11 +12,14 @@
 <body>
 	<h1>Where Tact Home</h1>
 	<br>
+	<h2>Contacts : ${totalContacts}</h2>
 	<br>
-	<P>The time on the server is ${serverTime}.</P>
+	<h2>Addresses : ${totalAddresses}</h2>
+	<br>
+	<h3>The time on the server is ${serverTime}.</h3>
 	<br>
 	<br>
-	<p>${randomUserInfo}</p>
+	<%-- <p>${randomUserInfo}</p> --%>
 
 	<br>
 	<br>

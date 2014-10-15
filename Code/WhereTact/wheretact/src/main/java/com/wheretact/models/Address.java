@@ -24,19 +24,22 @@ import java.util.UUID;
  */
 public class Address {
 
-	private UUID addressId;
+	private UUID contactId = null;
+	private UUID addressId = null;
 	private String  postcode, city, state, country, street;
 	private int streetNumber;
 
+	public UUID getContactId(){
+		return contactId;	
+	}
+	
+	public void setContactId(UUID contactId){
+		this.contactId = contactId;
+	}
 
 	public UUID getAddressId(){
 			return addressId;	
 	}
-	
-	/* On ne permet pas de modifier l'id
-	public void setAddressId(UUID addressID){
-		this.addressId = addressId; 
-	}*/
 	
 	public String getCountry() {
 		return country;
@@ -86,8 +89,8 @@ public class Address {
 		this.streetNumber = streetNumber;
 	}
 	
-	public Address(UUID addressId, int streetNumber, String street, String postCode, String city, String state, String country) {
-		
+	public Address(UUID contactId, UUID addressId, int streetNumber, String street, String postCode, String city, String state, String country) {
+		this.contactId = contactId;
 		this.addressId = addressId;
 		this.streetNumber = streetNumber;
 		this.street = street;
@@ -98,6 +101,13 @@ public class Address {
 		this.country = country; 
 	}
 	
+	@Override
+	public String toString(){
+		
+		return "Address [<ul><li>contactId=" + contactId + "</li><li> addressId=" + addressId + "</li><li> Number=" + streetNumber+ ", street=" + street
+				+ "</li><li> postcode=" + postcode + ", city=" + city + "</li><li> country=" + country + ", state=" + state+ "</ul>]";
+		
+	}
 	
 
 	/**
