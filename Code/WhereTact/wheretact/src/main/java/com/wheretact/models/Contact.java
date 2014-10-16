@@ -1,7 +1,13 @@
 package com.wheretact.models;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.UUID;
+
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.Size;
 
 
 /*
@@ -30,7 +36,7 @@ public class Contact {
 	private String email;
 	private String firstname;
 	private String lastname;
-	private String birthdate; 
+	private Date birthdate; 
 	
 	/**
 	 * Constructor for Contact Class
@@ -41,7 +47,7 @@ public class Contact {
 	 * @param lastname
 	 * @param phoneNumber
 	 */
-	public Contact(UUID contactId,String birthdate,String email,String firstname, String lastname,int phoneNumber, HashMap<String, Address> addresses, Address billingAddr) {
+	public Contact(UUID contactId,Date birthdate,String email,String firstname, String lastname,int phoneNumber, HashMap<String, Address> addresses, Address billingAddr) {
 		
 		this.contactId = contactId; 
 		this.birthdate = birthdate;
@@ -59,6 +65,7 @@ public class Contact {
 	}
 	
 	
+	
 	/* GETTERS & SETTERS */
 	
 	public HashMap<String, Address> getAddressList() {
@@ -68,6 +75,8 @@ public class Contact {
 	public void setAddressList(HashMap<String, Address> myAddressList) { // A VERIFIER
 		addressList = myAddressList;
 	}
+	
+	
 	
 	public void addContactAddress(String key, Address value){
 		addressList.put(key, value);
@@ -82,59 +91,85 @@ public class Contact {
 	public void setContactId(UUID contactId){
 		this.contactId = contactId; 
 	}*/
-	
-	public UUID getContactId(){
+	@NotNull
+	@Digits(integer=1,fraction=0)
+		public UUID getContactId(){
 		return contactId; 
 	}
 		
+	@NotNull
+	@Digits(integer=5,fraction=0)
 	public Integer getPhoneNumbers() {
 		return phoneNumber;
 	}
+	
+
 
 	public void setPhoneNumbers(Integer phones) {
 		this.phoneNumber = phones;
 	}
-
+	
+	@NotNull
+	@Size(max=50)
 	public String getEmails() {
 		return email;
 	}
+	
+
 
 	public void setEmails(String emails) {
 		this.email = emails;
 	}
-
+	@NotNull
 	public Address getBillingAddress() {
 		return billingAddress;
 	}
 
+	
 	public void setBillingAddress(Address billingAddress) {
 		this.billingAddress = billingAddress; 
 		
 	}
 	
+	@NotNull
+	@Size(max=20)
 	public String getFirstname() {
 		return firstname;
 	}
+	
+
+	
 	
 	public void setFirstname(String firstName) {
 		this.firstname = firstName;
 	}
 
+	@NotNull
+	@Size(max=20)
 	public String getLastname() {
 		return lastname;
 	}
 
+
+	
 	public void setLastname(String forname) {
 		this.lastname = forname;
 	}
 
-	public String getBirthdate() {
+
+	@NotNull
+	@Past	
+	public Date getBirthdate() {
 		return birthdate;
 	}
+	
 
-	public void setBirthdate(String birthdate) {
+	
+	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
+
+
 
 	
 	/**
