@@ -87,20 +87,20 @@ public class Contact {
 		return contactId; 
 	}
 		
-	public Integer getPhoneNumbers() {
+	public int getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumbers(Integer phones) {
-		this.phoneNumber = phones;
+	public void setPhoneNumber(int phone) {
+		this.phoneNumber = phone;
 	}
 
-	public String getEmails() {
+	public String getEmail() {
 		return email;
 	}
 
-	public void setEmails(String emails) {
-		this.email = emails;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public Address getBillingAddress() {

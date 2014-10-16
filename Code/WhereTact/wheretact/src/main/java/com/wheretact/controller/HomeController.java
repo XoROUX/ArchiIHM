@@ -7,12 +7,14 @@ import java.util.Date;
 import java.util.Locale;
 //import java.util.UUID;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wheretact.models.*;
 import com.wheretact.service.AddressService;
+import com.wheretact.service.AngularDataProvider;
 import com.wheretact.service.ContactService;
 
 @Controller
@@ -44,6 +46,8 @@ public class HomeController {
 		model.addAttribute("totalContacts", totalContacts );
 		model.addAttribute("totalAddresses", totalAddresses);
 		
+		/*
+		 * Liste des Addresses dans la mémoire (format test/debug)
 		if(sampleAddresses != null && sampleAddresses.readAll() != null){
 			myList += "<p>__________ADDRESSES_________ </p>";
 			for(Address a : sampleAddresses.readAll()){
@@ -52,11 +56,11 @@ public class HomeController {
 			if(sampleAddresses.readAll().size() == 0){
 				myList += "<br><p> No addresses found in Address Mapping. </p>";
 			}
-		}
+		}*/
+		model.addAttribute("angularTestContacts", AngularDataProvider.convertContacts(sampleContacts.getMapping()));
+		model.addAttribute("angularTestAddresses", AngularDataProvider.convertAddresses(sampleAddresses.getMapping()));
 		
 		ArrayList<Contact> contactList = (ArrayList<Contact>) sampleContacts.readAll();
-		
-		
 		
 		if(sampleContacts.getMapping().values().size() == 0){
 			myList += "<p>No elements recieved from service </p>";
