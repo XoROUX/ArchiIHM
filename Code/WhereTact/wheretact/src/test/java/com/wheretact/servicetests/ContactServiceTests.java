@@ -54,7 +54,7 @@ public class ContactServiceTests {
 		assertEquals(true, testContact.equals(contactServiceOne.getObjByID(contactId)));
 		
 		testContact.setBirthdate("updated");
-		testContact.setEmails("updated");
+		testContact.setEmail("updated");
 		testContact.setFirstname("updated");
 		testContact.setLastname("updated");
 		
@@ -64,7 +64,7 @@ public class ContactServiceTests {
 		assertEquals(true, testContact.equals(updatedContact));
 		
 		assertEquals(true, testContact.getBirthdate().equals(updatedContact.getBirthdate()));
-		assertEquals(true, testContact.getEmails().equals(updatedContact.getEmails()));
+		assertEquals(true, testContact.getEmail().equals(updatedContact.getEmail()));
 		assertEquals(true, testContact.getFirstname().equals(updatedContact.getFirstname()));
 		assertEquals(true, testContact.getLastname().equals(updatedContact.getLastname()));
 	}

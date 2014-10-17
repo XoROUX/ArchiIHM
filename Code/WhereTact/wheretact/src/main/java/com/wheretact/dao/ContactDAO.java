@@ -32,13 +32,13 @@ import com.wheretact.models.Contact;
 public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 
 	private static ContactDAO instance = null; 
-	private HashMap<UUID, Contact> allContacts;
+	private static HashMap<UUID, Contact> allContacts;
 	
 	/**
 	 * @Constructor
 	 */
 	private ContactDAO() {
-		this.allContacts = new HashMap<UUID, Contact>();
+		allContacts = new HashMap<UUID, Contact>();
 		start();
 	}
 	

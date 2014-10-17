@@ -17,9 +17,9 @@ public class ContactTests {
 		/*
 		 * Testing Getters and Setters
 		 */
-		assertEquals((double)911, (double)contact.getPhoneNumbers(), 0);
+		assertEquals((double)911, (double)contact.getPhoneNumber(), 0);
 		assertEquals("birthdate", contact.getBirthdate());
-		assertEquals("email", contact.getEmails());
+		assertEquals("email", contact.getEmail());
 	}
 	
 	@Test

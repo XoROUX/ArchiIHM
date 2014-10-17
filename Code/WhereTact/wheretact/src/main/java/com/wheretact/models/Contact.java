@@ -29,9 +29,9 @@ import javax.validation.constraints.Size;
  */
 public class Contact {
 
-	private UUID contactId;
-	private Address billingAddress;
-	private HashMap<String, Address> addressList;	
+	private UUID contactId = null;
+	private Address billingAddress = null;
+	private HashMap<UUID, Address> addressList = null;	
 	private int phoneNumber;
 	private String email;
 	private String firstname;
@@ -47,7 +47,7 @@ public class Contact {
 	 * @param lastname
 	 * @param phoneNumber
 	 */
-	public Contact(UUID contactId,Date birthdate,String email,String firstname, String lastname,int phoneNumber, HashMap<String, Address> addresses, Address billingAddr) {
+	public Contact(UUID contactId,String birthdate,String email,String firstname, String lastname,int phoneNumber, HashMap<UUID, Address> addresses, Address billingAddr) {
 		
 		this.contactId = contactId; 
 		this.birthdate = birthdate;
@@ -56,7 +56,7 @@ public class Contact {
 		this.lastname = lastname;
 		this.phoneNumber = phoneNumber;
 		if(addresses == null){
-			this.addressList = new HashMap<String, Address>();
+			this.addressList = new HashMap<UUID, Address>();
 		}
 		else{
 			this.addressList = addresses;
@@ -68,21 +68,20 @@ public class Contact {
 	
 	/* GETTERS & SETTERS */
 	
-	public HashMap<String, Address> getAddressList() {
+	public HashMap<UUID, Address> getAddressList() {
 		return addressList;
 	}
 	
-	public void setAddressList(HashMap<String, Address> myAddressList) { // A VERIFIER
+	public void setAddressList(HashMap<UUID, Address> myAddressList) { // A VERIFIER
 		addressList = myAddressList;
 	}
 	
-	
-	
-	public void addContactAddress(String key, Address value){
+	public void addContactAddress(UUID key, Address value){
+
 		addressList.put(key, value);
 	}
 	
-	public void removeContactAddress(String key){
+	public void removeContactAddress(UUID key){
 		if(addressList.containsKey(key)){
 			addressList.remove(key);
 		}
@@ -97,28 +96,31 @@ public class Contact {
 		return contactId; 
 	}
 		
+
 	@NotNull
 	@Digits(integer=5,fraction=0)
-	public Integer getPhoneNumbers() {
+	public int getPhoneNumber() {
+
 		return phoneNumber;
 	}
 	
 
 
-	public void setPhoneNumbers(Integer phones) {
-		this.phoneNumber = phones;
+	public void setPhoneNumber(int phone) {
+		this.phoneNumber = phone;
 	}
+
 	
 	@NotNull
 	@Size(max=50)
-	public String getEmails() {
+	public String getEmail() {
 		return email;
 	}
 	
 
 
-	public void setEmails(String emails) {
-		this.email = emails;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	@NotNull
 	public Address getBillingAddress() {
@@ -190,9 +192,10 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		return "Contact [\n\tcontactId=" + contactId + "\n\t phoneNumber=" + phoneNumber + "\n\t email=" + email
-				+ "\n\t firstname=" + firstname + ", lastname=" + lastname
-				+ "\n\t birthdate=" + birthdate + "\n]";
+		return "<br><p>______________________________Contact___________________________________</p>"
+				+ "[<ul><li>contactId=" + contactId + "</li><li> phoneNumber=" + phoneNumber + "</li><li> email=" + email
+				+ "</li><li> firstname=" + firstname + ", lastname=" + lastname
+				+ "</li><li> birthdate=" + birthdate + "</ul>]";
 	}	
 	
 }

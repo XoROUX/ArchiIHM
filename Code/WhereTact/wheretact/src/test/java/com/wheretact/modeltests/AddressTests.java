@@ -13,7 +13,7 @@ public class AddressTests {
 
 	@Test
 	public void testAddress() {
-		Address address = new Address(UUID.randomUUID(), 100, "street", "postCode", "city", "state", "country");
+		Address address = new Address(null, UUID.randomUUID(), 100, "street", "postCode", "city", "state", "country");
 		
 		/*
 		 * Testing Getters and Setters
@@ -26,8 +26,8 @@ public class AddressTests {
 	@Test
 	public void testEqualsAddress() {
 		UUID sameUUID = UUID.randomUUID();
-		Address addressOne = new Address(sameUUID, 100, "street", "postCode", "city", "state", "country");
-		Address addressOneModified = new Address(sameUUID, 200, "NOT", "THE", "SAME", "_", "INFO");
+		Address addressOne = new Address(null, sameUUID, 100, "street", "postCode", "city", "state", "country");
+		Address addressOneModified = new Address(null, sameUUID, 200, "NOT", "THE", "SAME", "_", "INFO");
 		
 		/*
 		 * Checks that two entities with the same ID are considered equal
@@ -35,7 +35,7 @@ public class AddressTests {
 		assertEquals(true, addressOne.equals(addressOneModified));
 		
 		UUID newUUID = UUID.randomUUID();
-		Address addressTwo  = new Address(newUUID, 100, "street", "postCode", "city", "state", "country");
+		Address addressTwo  = new Address(null, newUUID, 100, "street", "postCode", "city", "state", "country");
 		
 		/*
 		 * Checks that two addresses with same information (excluding ID) are considered equal

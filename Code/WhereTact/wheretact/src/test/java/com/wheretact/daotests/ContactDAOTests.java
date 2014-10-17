@@ -70,7 +70,7 @@ public class ContactDAOTests {
 		assertEquals(0, contactDAO.createObject(contactOne));
 		
 		contactOne.setBirthdate("UPDATED");
-		contactOne.setEmails("UPDATED");
+		contactOne.setEmail("UPDATED");
 		contactOne.setFirstname("UPDATED");
 		contactOne.setLastname("UPDATED");
 		
@@ -80,7 +80,7 @@ public class ContactDAOTests {
 		assertEquals("UPDATED", getContact.getBirthdate());
 		assertEquals("UPDATED", getContact.getFirstname());
 		assertEquals("UPDATED", getContact.getLastname());
-		assertEquals("UPDATED", getContact.getEmails());
+		assertEquals("UPDATED", getContact.getEmail());
 	}
 
 	@Test
