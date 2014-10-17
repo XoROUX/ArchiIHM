@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wheretact.models.*;
 import com.wheretact.service.AddressService;
-import com.wheretact.service.AngularDataProvider;
+//import com.wheretact.service.AngularDataProvider;
 import com.wheretact.service.ContactService;
 
 @Controller
@@ -57,8 +57,8 @@ public class HomeController {
 				myList += "<br><p> No addresses found in Address Mapping. </p>";
 			}
 		}*/
-		model.addAttribute("angularTestContacts", AngularDataProvider.convertContacts(sampleContacts.getMapping()));
-		model.addAttribute("angularTestAddresses", AngularDataProvider.convertAddresses(sampleAddresses.getMapping()));
+//		model.addAttribute("angularTestContacts", AngularDataProvider.convertContacts(sampleContacts.getMapping()));
+//		model.addAttribute("angularTestAddresses", AngularDataProvider.convertAddresses(sampleAddresses.getMapping()));
 		
 		ArrayList<Contact> contactList = (ArrayList<Contact>) sampleContacts.readAll();
 		
@@ -68,7 +68,7 @@ public class HomeController {
 		else {
 			try {
 				for(Contact contact : contactList){
-					myList += "<p>" + contact.toString() + "</p>";
+					myList += "<div class=\"border\"><p>" + contact.toString() + "</p>";
 					myList += "<br><ul>";
 					
 					if(contact.getAddressList() != null && contact.getAddressList().size() > 0){
@@ -85,13 +85,13 @@ public class HomeController {
 					else {
 						myList += "<li>Addresses : None found here.</li>";
 					}
-					myList += "</ul><br>";
+					myList += "</ul><br></div>";
 					
 									
 				}
 	
 			}catch(Exception e){
-				myList = "<li>" + "There was an error in the list" + "</li>";
+				myList = "<p>" + "There was an error in the list" + "</p>";
 			}
 		}
 		

@@ -1,31 +1,33 @@
 <%@page import="com.wheretact.models.Contact"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.wheretact.service.ContactService"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Where Tact</title>
-</head>
+
+<%@ include file="/WEB-INF/jsp/include/head.jsp" %>
+
+
 <body>
+<%@ include file="/WEB-INF/jsp/include/header.jsp" %>
+
+	<br>
 	<h1>Where Tact Home</h1>
 	<br>
 	<h2>Contacts : ${totalContacts}</h2>
 	<br>
 	<h2>Addresses : ${totalAddresses}</h2>
 	<br>
-	<h3>The time on the server is ${serverTime}.</h3>
+	<h3 class="italic">The time on the server is ${serverTime}.</h3>
+	
+	<a href="/sample">Link to sample</a>
 	<br>
 	<br>
-	<%-- <p>${randomUserInfo}</p> --%>
+	<%-- <p>${randomUserInfo}</p> --%>	
+	<br>
+	<%-- <p>${angularTestContacts}</p>
+	<br>
+	<p>${angularTestAddresses}</p> --%>
+	<br>
 
-	<br>
-	<br>
-
-	<h2>Read between the lines</h2>
-	<p>Now ... :</p>
+	<h2>Test Contacts</h2>
 	<br>
 	<p>${myList}</p>
 
