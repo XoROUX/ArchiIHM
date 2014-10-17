@@ -47,7 +47,7 @@ public class Contact {
 	 * @param lastname
 	 * @param phoneNumber
 	 */
-	public Contact(UUID contactId,String birthdate,String email,String firstname, String lastname,int phoneNumber, HashMap<UUID, Address> addresses, Address billingAddr) {
+	public Contact(UUID contactId,Date birthdate,String email,String firstname, String lastname,int phoneNumber, HashMap<UUID, Address> addresses, Address billingAddr) {
 		
 		this.contactId = contactId; 
 		this.birthdate = birthdate;
@@ -164,13 +164,11 @@ public class Contact {
 	public Date getBirthdate() {
 		return birthdate;
 	}
-	
 
 	
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
-
 
 
 	

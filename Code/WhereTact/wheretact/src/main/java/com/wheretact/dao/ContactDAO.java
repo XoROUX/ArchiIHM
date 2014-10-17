@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import com.google.appengine.repackaged.org.joda.time.DateTime;
 import com.wheretact.business.WhereTactWebDAOInterface;
 import com.wheretact.models.Contact;
 
@@ -57,7 +58,7 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 
 		Contact sampleContact = null;
 		for(int i=0; i<5; i++){
-			sampleContact = new Contact(UUID.randomUUID(), "birthdate", "email", "firstname", "lastname", i, null, null);
+			sampleContact = new Contact(UUID.randomUUID(), new DateTime().toDate(), "email", "firstname", "lastname", i, null, null);
 			
 			createObject(sampleContact);
 			//System.out.println("STARTING : CONTACT ---> " + sampleContact.toString()+"___________________");

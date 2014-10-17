@@ -3,7 +3,6 @@ package com.wheretact.models;
 
 import java.util.UUID;
 
-import javax.validation.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;

@@ -6,13 +6,14 @@ import java.util.UUID;
 
 import org.junit.Test;
 
+import com.google.appengine.repackaged.org.joda.time.DateTime;
 import com.wheretact.models.Contact;
 
 public class ContactTests {
 
 	@Test
 	public void testContact() {
-		Contact contact = new Contact(UUID.randomUUID(), "birthdate", "email", "firstname", "lastname", 911, null, null);
+		Contact contact = new Contact(UUID.randomUUID(), new DateTime().toDate(), "email", "firstname", "lastname", 911, null, null);
 		
 		/*
 		 * Testing Getters and Setters
@@ -26,8 +27,8 @@ public class ContactTests {
 	public void testEquals(){
 		
 		UUID sameUUID = UUID.randomUUID();
-		Contact contactOne = new Contact(sameUUID, "birthdate", "email", "firstname", "lastname", 911, null, null);
-		Contact contactOneModified = new Contact(sameUUID, "NOT", "THE", "SAME", "INFO", 911, null, null);
+		Contact contactOne = new Contact(sameUUID, new DateTime().toDate(), "email", "firstname", "lastname", 911, null, null);
+		Contact contactOneModified = new Contact(sameUUID, new DateTime().toDate(), "THE", "SAME", "INFO", 911, null, null);
 		
 		/*
 		 * Checks that two entities with the same ID are considered equal
@@ -35,7 +36,7 @@ public class ContactTests {
 		assertEquals(true, contactOne.equals(contactOneModified));
 		
 		UUID newUUID = UUID.randomUUID();
-		Contact contactTwo  = new Contact(newUUID, "birthdate", "email", "firstname", "lastname", 911, null, null);
+		Contact contactTwo  = new Contact(newUUID, new DateTime().toDate(), "email", "firstname", "lastname", 911, null, null);
 		
 		/*
 		 * Checks that two contacts with same information (excluding ID) are considered equal

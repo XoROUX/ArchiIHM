@@ -8,6 +8,7 @@ import java.util.UUID;
 
 import org.junit.Test;
 
+import com.google.appengine.repackaged.org.joda.time.DateTime;
 import com.wheretact.dao.ContactDAO;
 import com.wheretact.models.Contact;
 
@@ -36,7 +37,7 @@ public class ContactDAOTests {
 		int sizeOfHashMap = contactDAO.getMapping().size();
 		
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, "birthdate", "email", "firstname", "lastname", 1007, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1007, null, null);
 		
 		contactDAO.createObject(contactOne);
 		
@@ -49,7 +50,7 @@ public class ContactDAOTests {
 	public void testDeleteObject() {
 		ContactDAO contactDAO = ContactDAO.getInstance();
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, "birthdate", "email", "firstname", "lastname", 1008, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1008, null, null);
 		int sizeOfHashMap = contactDAO.getMapping().size();
 		
 		assertEquals(0, contactDAO.createObject(contactOne));
@@ -65,11 +66,11 @@ public class ContactDAOTests {
 	public void testUpdateObject() {
 		ContactDAO contactDAO = ContactDAO.getInstance();
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, "birthdate", "email", "firstname", "lastname", 1009, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1009, null, null);
 		
 		assertEquals(0, contactDAO.createObject(contactOne));
 		
-		contactOne.setBirthdate("UPDATED");
+		contactOne.setBirthdate(new DateTime().toDate());
 		contactOne.setEmail("UPDATED");
 		contactOne.setFirstname("UPDATED");
 		contactOne.setLastname("UPDATED");
@@ -88,7 +89,7 @@ public class ContactDAOTests {
 		ContactDAO contactDAO = ContactDAO.getInstance();
 		
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, "birthdate", "email", "firstname", "lastname", 1010, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1010, null, null);
 		assertEquals(0, contactDAO.createObject(contactOne));
 		
 		ArrayList<Contact> addressList = (ArrayList<Contact>)contactDAO.readAll();
@@ -106,7 +107,7 @@ public class ContactDAOTests {
 		assertNotNull(addressMap);
 		
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, "birthdate", "email", "firstname", "lastname", 1011, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1011, null, null);
 		assertEquals(0, contactDAO.createObject(contactOne));
 		
 		assertNotNull(addressMap.get(contactId));
@@ -116,7 +117,7 @@ public class ContactDAOTests {
 	public void testGetObjByID() {
 		ContactDAO contactDAO = ContactDAO.getInstance();
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, "birthdate", "email", "firstname", "lastname", 1011, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1011, null, null);
 		
 		assertEquals(0, contactDAO.createObject(contactOne));
 		
