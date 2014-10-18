@@ -3,7 +3,13 @@ package com.wheretact.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import com.wheretact.business.WhereTactWebDAOInterface;
 import com.wheretact.models.Address;
@@ -27,7 +33,7 @@ import com.wheretact.models.Contact;
 
 /**
  * Class AddressDAO : Singleton class that manages all the addresses we will use
- * @author Pierre
+ * @author Pierre Manu
  *
  */
 public class AddressDAO implements WhereTactWebDAOInterface<Address> {
@@ -35,14 +41,23 @@ public class AddressDAO implements WhereTactWebDAOInterface<Address> {
 	private static AddressDAO instance = null;
 	private static HashMap<UUID, Address> allAddresses;
 	
+	private static ValidatorFactory factory;
+	private static Validator validator;
+	
 	/**
 	 * @Constructor
 	 */
-	private AddressDAO() {
+		private AddressDAO() {
 		allAddresses = new HashMap<UUID, Address>();
+		factory =Validation.buildDefaultValidatorFactory();
+		validator = factory.getValidator();	
 		start();
 	}
+		
 	
+		
+		
+		
 	/**
 	 * Singleton that ensures the use of the same DAO and data
 	 */
@@ -80,6 +95,9 @@ public class AddressDAO implements WhereTactWebDAOInterface<Address> {
 					e.printStackTrace();
 				}
 			}
+			
+			/****validate****/ 
+			
 		}
 		
 	}
@@ -116,17 +134,29 @@ public class AddressDAO implements WhereTactWebDAOInterface<Address> {
 	 */
 	@Override
 	public int createObject(Address myObject) {
+		
+		Set<ConstraintViolation<Address>> constraintViolations = validator.validate(myObject);
 		try{
 			if(allAddresses.containsKey(myObject.getAddressId())){
 				return 1; 
 			}
-			allAddresses.put(myObject.getAddressId(), myObject);
-			return 0;
 			
+			if(constraintViolations.size()> 0 ){
+				System.out.println("Impossible de valider votre adresse");
+				//for(ConstraintViolation<Address> contrainte : constraintViolations){
+				//	System.out.println(contrainte.getRootBeanClass().getSimpleName()+ "." + contrainte.getPropertyPath() + " " + contrainte.getMessage());					
+			//	}
+				return 1; 
+			}
+			 else {
+						System.out.println("L'adresse est bien enregistrée");
+						allAddresses.put(myObject.getAddressId(), myObject);
+						return 0;
+					}					
 		}catch(Exception e){
 			return 2;
-		}
-	}
+		}		
+			}
 
 	/**
 	 * Delete an address

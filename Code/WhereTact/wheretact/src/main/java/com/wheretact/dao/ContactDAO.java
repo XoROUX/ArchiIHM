@@ -3,7 +3,13 @@ package com.wheretact.dao;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import com.google.appengine.repackaged.org.joda.time.DateTime;
 import com.wheretact.business.WhereTactWebDAOInterface;
@@ -34,12 +40,16 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 
 	private static ContactDAO instance = null; 
 	private static HashMap<UUID, Contact> allContacts;
+	private static ValidatorFactory factory;
+	private static Validator validator;
 	
 	/**
 	 * @Constructor
 	 */
 	private ContactDAO() {
 		allContacts = new HashMap<UUID, Contact>();
+		factory =Validation.buildDefaultValidatorFactory();
+		validator = factory.getValidator();	
 		start();
 	}
 	
@@ -71,13 +81,24 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 	 */
 	@Override
 	public int createObject(Contact myObject) {
+	Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(myObject);
+		
 		try{
 			if(allContacts.containsKey(myObject.getContactId())){
 				return 1; 
+			}			
+			if(constraintViolations.size()> 0 ){
+				System.out.println("Impossible de valider votre contact");
+					//for(ConstraintViolation<Contact> contrainte : constraintViolations){
+					//System.out.println(contrainte.getRootBeanClass().getSimpleName()+ "." + contrainte.getPropertyPath() + " " + contrainte.getMessage());
+					//}
+				return 1; 
 			}
-			allContacts.put(myObject.getContactId(), myObject);
-			return 0;
-			
+			 else {
+						System.out.println("Le contact est bien enregistré");
+						allContacts.put(myObject.getContactId(), myObject);
+						return 0;
+					}				
 		}catch(Exception e){
 			return 2;
 		}
