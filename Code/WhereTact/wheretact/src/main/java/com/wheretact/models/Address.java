@@ -1,9 +1,7 @@
 package com.wheretact.models;
 
-
 import java.util.UUID;
 
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -34,6 +32,7 @@ public class Address {
 	private String  postcode, city, state, country, street;
 	private int streetNumber;
 
+	
 	public UUID getContactId(){
 		return contactId;	
 	}
@@ -42,6 +41,8 @@ public class Address {
 		this.contactId = contactId;
 	}
 
+	
+	@NotNull
 	public UUID getAddressId(){
 			return addressId;	
 	}
@@ -52,20 +53,17 @@ public class Address {
 	public String getCountry() {
 		return country;
 	}
-
-	
 	
 	public void setCountry(String country) {
 		this.country = country;
 	}
 	
+	
 	@NotNull
-	@Size(max=20)
+	@Size(min=5, max=8)
 	public String getPostcode() {
 		return postcode;
 	}
-
-	
 	
 	public void setPostcode(String postcode) {
 		this.postcode = postcode;
@@ -77,20 +75,17 @@ public class Address {
 	public String getCity() {
 		return city;
 	}
-
-
 	
 	public void setCity(String city) {
 		this.city = city;
 	}
+	
 	
 	@NotNull
 	@Size(max=20)
 	public String getState() {
 		return state;
 	}
-	
-	
 	
 	public void setState(String state) {
 		this.state = state;
@@ -103,23 +98,20 @@ public class Address {
 		return street;
 	}
 	
-	
-	
 	public void setStreet(String street){
 		this.street = street;
 	}
 	
+	
 	@NotNull
-	@Digits(integer=1,fraction=0)
 	public int getStreetNumber(){
 		return streetNumber;
 	}
 	
-	
-	
 	public void setStreetNumber(int streetNumber){
 		this.streetNumber = streetNumber;
 	}
+	
 	
 	public Address(UUID contactId, UUID addressId, int streetNumber, String street, String postCode, String city, String state, String country) {
 		this.contactId = contactId;
@@ -133,6 +125,7 @@ public class Address {
 		this.country = country; 
 	}
 	
+	
 	@Override
 	public String toString(){
 		
@@ -140,7 +133,6 @@ public class Address {
 				+ "</li><li> postcode=" + postcode + ", city=" + city + "</li><li> country=" + country + ", state=" + state+ "</ul>]";
 		
 	}
-
 	
 
 	/**

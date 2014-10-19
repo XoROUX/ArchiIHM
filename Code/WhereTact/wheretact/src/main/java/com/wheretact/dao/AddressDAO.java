@@ -47,9 +47,9 @@ public class AddressDAO implements WhereTactWebDAOInterface<Address> {
 	/**
 	 * @Constructor
 	 */
-		private AddressDAO() {
+	private AddressDAO() {
 		allAddresses = new HashMap<UUID, Address>();
-		factory =Validation.buildDefaultValidatorFactory();
+		factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();	
 		start();
 	}
@@ -135,28 +135,26 @@ public class AddressDAO implements WhereTactWebDAOInterface<Address> {
 	@Override
 	public int createObject(Address myObject) {
 		
-		Set<ConstraintViolation<Address>> constraintViolations = validator.validate(myObject);
 		try{
 			if(allAddresses.containsKey(myObject.getAddressId())){
 				return 1; 
 			}
 			
+			Set<ConstraintViolation<Address>> constraintViolations = validator.validate(myObject);
+			
 			if(constraintViolations.size()> 0 ){
 				System.out.println("Impossible de valider votre adresse");
-				//for(ConstraintViolation<Address> contrainte : constraintViolations){
-				//	System.out.println(contrainte.getRootBeanClass().getSimpleName()+ "." + contrainte.getPropertyPath() + " " + contrainte.getMessage());					
-			//	}
-				return 1; 
+				return 3; 
 			}
-			 else {
-						System.out.println("L'adresse est bien enregistrée");
-						allAddresses.put(myObject.getAddressId(), myObject);
-						return 0;
-					}					
+			else {
+				System.out.println("L'adresse est bien enregistrée");
+				allAddresses.put(myObject.getAddressId(), myObject);
+				return 0;
+			}					
 		}catch(Exception e){
 			return 2;
 		}		
-			}
+	}
 
 	/**
 	 * Delete an address
@@ -182,8 +180,24 @@ public class AddressDAO implements WhereTactWebDAOInterface<Address> {
 	public int updateObject(Address myNewObj) {
 		try {
 			if(allAddresses.containsKey(myNewObj.getAddressId())){
-				allAddresses.put(myNewObj.getAddressId(), myNewObj);
-				return 0;
+				
+				Set<ConstraintViolation<Address>> constraintViolations = validator.validate(myNewObj);
+				
+				if(constraintViolations.size()> 0 ){
+					
+					for(ConstraintViolation<Address> constraint : constraintViolations){
+						
+						System.out.println(constraint.getRootBean().toString());
+						System.out.println(constraint.getMessage());
+					}
+					System.out.println("Impossible de valider votre adresse");
+					return 3; 
+				}
+				else {
+					System.out.println("L'adresse est bien mise à jour.");
+					allAddresses.put(myNewObj.getAddressId(), myNewObj);
+					return 0;
+				}
 			}
 			return 1;
 		}catch(Exception e){

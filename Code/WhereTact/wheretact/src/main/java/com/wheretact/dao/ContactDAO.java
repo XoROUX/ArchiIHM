@@ -1,6 +1,7 @@
 package com.wheretact.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
@@ -11,7 +12,8 @@ import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
 
-import com.google.appengine.repackaged.org.joda.time.DateTime;
+
+
 import com.wheretact.business.WhereTactWebDAOInterface;
 import com.wheretact.models.Contact;
 
@@ -40,6 +42,7 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 
 	private static ContactDAO instance = null; 
 	private static HashMap<UUID, Contact> allContacts;
+	
 	private static ValidatorFactory factory;
 	private static Validator validator;
 	
@@ -48,7 +51,7 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 	 */
 	private ContactDAO() {
 		allContacts = new HashMap<UUID, Contact>();
-		factory =Validation.buildDefaultValidatorFactory();
+		factory = Validation.buildDefaultValidatorFactory();
 		validator = factory.getValidator();	
 		start();
 	}
@@ -68,10 +71,9 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 
 		Contact sampleContact = null;
 		for(int i=0; i<5; i++){
-			sampleContact = new Contact(UUID.randomUUID(), new DateTime().toDate(), "email", "firstname", "lastname", i, null, null);
+			sampleContact = new Contact(UUID.randomUUID(), new Date(), "email", "firstname", "lastname", i, null, null);
 			
 			createObject(sampleContact);
-			//System.out.println("STARTING : CONTACT ---> " + sampleContact.toString()+"___________________");
 		}
 		
 	}
@@ -81,24 +83,23 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 	 */
 	@Override
 	public int createObject(Contact myObject) {
-	Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(myObject);
 		
 		try{
 			if(allContacts.containsKey(myObject.getContactId())){
 				return 1; 
-			}			
+			}
+			
+			Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(myObject);		
+			
 			if(constraintViolations.size()> 0 ){
 				System.out.println("Impossible de valider votre contact");
-					//for(ConstraintViolation<Contact> contrainte : constraintViolations){
-					//System.out.println(contrainte.getRootBeanClass().getSimpleName()+ "." + contrainte.getPropertyPath() + " " + contrainte.getMessage());
-					//}
-				return 1; 
+				return 3; 
 			}
-			 else {
-						System.out.println("Le contact est bien enregistré");
-						allContacts.put(myObject.getContactId(), myObject);
-						return 0;
-					}				
+			else {
+				System.out.println("Le contact est bien enregistré");
+				allContacts.put(myObject.getContactId(), myObject);
+				return 0;
+			}				
 		}catch(Exception e){
 			return 2;
 		}
@@ -128,8 +129,18 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 	public int updateObject(Contact myNewObj) {
 		try {
 			if(allContacts.containsKey(myNewObj.getContactId())){
-				allContacts.put(myNewObj.getContactId(), myNewObj);
-				return 0;
+				
+				Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(myNewObj);
+				
+				if(constraintViolations.size()> 0 ){
+					System.out.println("Impossible de valider votre adresse");
+					return 3; 
+				}
+				else {
+					System.out.println("Le contact est bien mis à jour");
+					allContacts.put(myNewObj.getContactId(), myNewObj);
+					return 0;
+				}
 			}
 			return 1;
 		}catch(Exception e){

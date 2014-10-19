@@ -11,9 +11,9 @@
 	<br>
 	<h1>Where Tact Home</h1>
 	<br>
-	<h2>Contacts : ${totalContacts}</h2>
+<%-- 	<h2>Contacts : ${totalContacts}</h2>
 	<br>
-	<h2>Addresses : ${totalAddresses}</h2>
+	<h2>Addresses : ${totalAddresses}</h2> --%>
 	<br>
 	<h3 class="italic">The time on the server is ${serverTime}.</h3>
 	

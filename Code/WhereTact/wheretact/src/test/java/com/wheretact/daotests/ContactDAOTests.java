@@ -34,14 +34,11 @@ public class ContactDAOTests {
 	@Test
 	public void testCreateObject() {
 		ContactDAO contactDAO = ContactDAO.getInstance();
-		int sizeOfHashMap = contactDAO.getMapping().size();
 		
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1007, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime(1900, 12, 12, 12, 12, 12).toDate(), "email", "firstname", "lastname", 1007, null, null);
 		
-		contactDAO.createObject(contactOne);
-		
-		assertEquals(sizeOfHashMap+1, contactDAO.getMapping().size());
+		assertEquals(0,  contactDAO.createObject(contactOne));
 		
 		assertEquals(true, contactOne.equals(contactDAO.getMapping().get(contactId)));
 	}
@@ -50,7 +47,7 @@ public class ContactDAOTests {
 	public void testDeleteObject() {
 		ContactDAO contactDAO = ContactDAO.getInstance();
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1008, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime(1900, 12, 12, 12, 12, 12).toDate(), "email", "firstname", "lastname", 1008, null, null);
 		int sizeOfHashMap = contactDAO.getMapping().size();
 		
 		assertEquals(0, contactDAO.createObject(contactOne));
@@ -66,11 +63,11 @@ public class ContactDAOTests {
 	public void testUpdateObject() {
 		ContactDAO contactDAO = ContactDAO.getInstance();
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1009, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime(1900, 12, 12, 12, 12, 12).toDate(), "email", "firstname", "lastname", 1009, null, null);
 		
 		assertEquals(0, contactDAO.createObject(contactOne));
 		
-		contactOne.setBirthdate(new DateTime().toDate());
+		contactOne.setBirthdate(new DateTime(1900, 2, 2, 2, 2, 2).toDate());
 		contactOne.setEmail("UPDATED");
 		contactOne.setFirstname("UPDATED");
 		contactOne.setLastname("UPDATED");
@@ -78,7 +75,8 @@ public class ContactDAOTests {
 		assertEquals(0, contactDAO.updateObject(contactOne));
 		
 		Contact getContact = contactDAO.getMapping().get(contactId);
-		assertEquals("UPDATED", getContact.getBirthdate());
+
+		assertEquals(new DateTime(1900, 2, 2, 2, 2, 2).toDate(), getContact.getBirthdate());
 		assertEquals("UPDATED", getContact.getFirstname());
 		assertEquals("UPDATED", getContact.getLastname());
 		assertEquals("UPDATED", getContact.getEmail());
@@ -89,7 +87,7 @@ public class ContactDAOTests {
 		ContactDAO contactDAO = ContactDAO.getInstance();
 		
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1010, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime(1900, 12, 12, 12, 12, 12).toDate(), "email", "firstname", "lastname", 1010, null, null);
 		assertEquals(0, contactDAO.createObject(contactOne));
 		
 		ArrayList<Contact> addressList = (ArrayList<Contact>)contactDAO.readAll();
@@ -107,7 +105,7 @@ public class ContactDAOTests {
 		assertNotNull(addressMap);
 		
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1011, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime(1900, 12, 12, 12, 12, 12).toDate(), "email", "firstname", "lastname", 1011, null, null);
 		assertEquals(0, contactDAO.createObject(contactOne));
 		
 		assertNotNull(addressMap.get(contactId));
@@ -117,7 +115,7 @@ public class ContactDAOTests {
 	public void testGetObjByID() {
 		ContactDAO contactDAO = ContactDAO.getInstance();
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1011, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime(1900, 12, 12, 12, 12, 12).toDate(), "email", "firstname", "lastname", 1011, null, null);
 		
 		assertEquals(0, contactDAO.createObject(contactOne));
 		

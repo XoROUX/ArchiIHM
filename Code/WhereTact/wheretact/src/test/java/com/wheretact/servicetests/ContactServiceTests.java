@@ -26,7 +26,7 @@ public class ContactServiceTests {
 	public void testCreateObject() {
 		ContactService contactServiceOne = new ContactService();
 		UUID contactId = UUID.randomUUID();
-		Contact testContact = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 13377331, null, null);
+		Contact testContact = new Contact(contactId, new DateTime(1900, 2, 2, 2, 2, 2).toDate(), "email", "firstname", "lastname", 13377331, null, null);
 		
 		assertEquals(0, contactServiceOne.createObject(testContact));
 		assertEquals(true, testContact.equals(contactServiceOne.getObjByID(contactId)));
@@ -36,7 +36,7 @@ public class ContactServiceTests {
 	public void testDeleteObject() {
 		ContactService contactServiceOne = new ContactService();
 		UUID contactId = UUID.randomUUID();
-		Contact testContact = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 13377331, null, null);
+		Contact testContact = new Contact(contactId, new DateTime(1900, 2, 2, 2, 2, 2).toDate(), "email", "firstname", "lastname", 13377331, null, null);
 		
 		assertEquals(0, contactServiceOne.createObject(testContact));
 		assertEquals(true, testContact.equals(contactServiceOne.getObjByID(contactId)));
@@ -49,12 +49,12 @@ public class ContactServiceTests {
 	public void testUpdateObject() {
 		ContactService contactServiceOne = new ContactService();
 		UUID contactId = UUID.randomUUID();
-		Contact testContact = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 13377331, null, null);
+		Contact testContact = new Contact(contactId, new DateTime(1900, 2, 2, 2, 2, 2).toDate(), "email", "firstname", "lastname", 13377331, null, null);
 		
 		assertEquals(0, contactServiceOne.createObject(testContact));
 		assertEquals(true, testContact.equals(contactServiceOne.getObjByID(contactId)));
 		
-		testContact.setBirthdate(new DateTime().toDate());
+		testContact.setBirthdate(new DateTime(1900, 5, 5, 5, 5, 5).toDate());
 		testContact.setEmail("updated");
 		testContact.setFirstname("updated");
 		testContact.setLastname("updated");
@@ -75,7 +75,7 @@ public class ContactServiceTests {
 		ContactService contactServiceOne = new ContactService();
 		
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1010, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime(1900, 12, 12, 12, 12, 12).toDate(), "email", "firstname", "lastname", 1010, null, null);
 		assertEquals(0, contactServiceOne.createObject(contactOne));
 		
 		ArrayList<Contact> addressList = (ArrayList<Contact>)contactServiceOne.readAll();
@@ -93,7 +93,7 @@ public class ContactServiceTests {
 		assertNotNull(addressMap);
 		
 		UUID contactId = UUID.randomUUID();
-		Contact contactOne = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 1011, null, null);
+		Contact contactOne = new Contact(contactId, new DateTime(1900, 12, 12, 12, 12, 12).toDate(), "email", "firstname", "lastname", 1011, null, null);
 		assertEquals(0, contactServiceOne.createObject(contactOne));
 		
 		assertNotNull(addressMap.get(contactId));
@@ -103,7 +103,7 @@ public class ContactServiceTests {
 	public void testGetObjByID() {
 		ContactService contactServiceOne = new ContactService();
 		UUID contactId = UUID.randomUUID();
-		Contact testContact = new Contact(contactId, new DateTime().toDate(), "email", "firstname", "lastname", 13377331, null, null);
+		Contact testContact = new Contact(contactId, new DateTime(1900, 12, 12, 12, 12, 12).toDate(), "email", "firstname", "lastname", 13377331, null, null);
 		
 		assertNull(contactServiceOne.getObjByID(contactId));
 		

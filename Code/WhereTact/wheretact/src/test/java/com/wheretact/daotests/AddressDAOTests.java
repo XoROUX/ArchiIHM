@@ -35,14 +35,11 @@ public class AddressDAOTests {
 	@Test
 	public void testCreateObject() {
 		AddressDAO addrDAO = AddressDAO.getInstance();
-		int sizeOfHashMap = addrDAO.getMapping().size();
-		
+
 		UUID addressId = UUID.randomUUID();
 		Address addressOne = new Address(null, addressId, 100, "street", "postCode", "city", "state", "country");
 		
-		addrDAO.createObject(addressOne);
-		
-		assertEquals(sizeOfHashMap+1, addrDAO.getMapping().size());
+		assertEquals(0, addrDAO.createObject(addressOne));
 		
 		assertEquals(true, addressOne.equals(addrDAO.getMapping().get(addressId)));
 	}
@@ -51,7 +48,7 @@ public class AddressDAOTests {
 	public void testDeleteObject() {
 		AddressDAO addrDAO = AddressDAO.getInstance();
 		UUID addressId = UUID.randomUUID();
-		Address addressOne = new Address(null, addressId, 1000, "street", "test", "delete", "address", "country");
+		Address addressOne = new Address(null, addressId, 1000, "street", "teste", "delete", "address", "country");
 		int sizeOfHashMap = addrDAO.getMapping().size();
 		
 		assertEquals(0, addrDAO.createObject(addressOne));
@@ -67,7 +64,7 @@ public class AddressDAOTests {
 	public void testUpdateObject() {
 		AddressDAO addrDAO = AddressDAO.getInstance();
 		UUID addressId = UUID.randomUUID();
-		Address addressOne = new Address(null, addressId, 1000, "street", "test", "delete", "address", "country");
+		Address addressOne = new Address(null, addressId, 1000, "street", "teste", "delete", "address", "country");
 		
 		assertEquals(0, addrDAO.createObject(addressOne));
 		
@@ -92,7 +89,7 @@ public class AddressDAOTests {
 		AddressDAO addrDAO = AddressDAO.getInstance();
 		
 		UUID addressId = UUID.randomUUID();
-		Address addressOne = new Address(null, addressId, 1000, "street", "test", "delete", "address", "country");
+		Address addressOne = new Address(null, addressId, 1000, "street", "teste", "delete", "address", "country");
 		assertEquals(0, addrDAO.createObject(addressOne));
 		
 		ArrayList<Address> addressList = (ArrayList<Address>)addrDAO.readAll();
@@ -110,7 +107,7 @@ public class AddressDAOTests {
 		assertNotNull(addressMap);
 		
 		UUID addressId = UUID.randomUUID();
-		Address addressOne = new Address(null, addressId, 1000, "street", "test", "delete", "address", "country");
+		Address addressOne = new Address(null, addressId, 1000, "street", "teste", "delete", "address", "country");
 		assertEquals(0, addrDAO.createObject(addressOne));
 		
 		assertNotNull(addressMap.get(addressId));
@@ -120,7 +117,7 @@ public class AddressDAOTests {
 	public void testGetObjByID() {
 		AddressDAO addrDAO = AddressDAO.getInstance();
 		UUID addressId = UUID.randomUUID();
-		Address addressOne = new Address(null, addressId, 1000, "street", "test", "delete", "address", "country");
+		Address addressOne = new Address(null, addressId, 1000, "street", "teste", "delete", "address", "country");
 		
 		assertEquals(0, addrDAO.createObject(addressOne));
 		
