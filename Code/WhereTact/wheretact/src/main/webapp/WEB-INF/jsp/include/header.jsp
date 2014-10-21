@@ -1,11 +1,13 @@
-<header>
-	
-	<a href="/home">
-		<img class="bannerLogo bannerBlock" src="/images/logo0_1.jpg"><img>
-	</a>
-	
-	<h1 class="bannerBlock"> Where Tact </h1>
-	<p class="italic bannerBlock">Contacts and Addresses</p>
-	
-	
+<header class="">
+
+	<div class="bannerBox">
+		<img class="bannerLogo" src="/images/logo0_1.jpg">
+		<h1 class="bannerTitle bannerBlock">Where Tact</h1>
+		<p class="bannerSubtitle bannerBlock italic">Contacts and Addresses</p>
+		<p>
+			<a class="divLink" href="/home">Home URL</a>
+		</p>
+	</div>
+
+	<div class="horizontalRepeatBlock"></div>
 </header>
