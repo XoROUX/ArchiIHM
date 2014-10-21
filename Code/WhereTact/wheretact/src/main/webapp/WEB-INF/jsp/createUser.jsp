@@ -4,17 +4,8 @@
 <html>
 <%@ include file="/WEB-INF/jsp/include/head.jsp"%>
 <body>
+<%@ include file="/WEB-INF/jsp/include/header.jsp"%>
 
-	<%@ include file="/WEB-INF/jsp/include/header.jsp"%>
-	
-	<br><br><br>
-	<br>
-	<h1>Where Tact Sample</h1>
-	<br>
-	
-	<a href="/sample/addSample"> ADD</a>
-	<a href="/user/new"> nouvel utilisateur</a>
-	<a href="/user/1"> utilisateur 1</a>
-	
+
 </body>
 </html>

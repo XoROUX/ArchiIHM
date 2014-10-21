@@ -21,7 +21,7 @@ import com.wheretact.service.ContactService;
 public class HomeController {
 
 	@RequestMapping(value="/home")
-	public String home(Locale locale, Model model){
+	public String home(Locale locale, Model model){//<--- ça sert à quoi locale et model?
 		
 		/*
 		 * Affichage de la date dans la page, calcul de la l'heure actuelle (française)

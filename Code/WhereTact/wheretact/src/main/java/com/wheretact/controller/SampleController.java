@@ -15,6 +15,6 @@ public class SampleController {
 	@RequestMapping(value="/sample/addSample")
 	public String addSample(){
 		
-		return addSample();
+		return "addSample";
 	}
 }
