@@ -18,6 +18,8 @@ body {
 	background-color: silver;
 	width: 100%;
 	float: left;
+	margin-left: 2em;
+	padding-top: 6em;
 }
 
 a.randomUserInfo {
@@ -39,21 +41,28 @@ header {
 	background-color: rgb(66, 115, 178);
 	size: auto;
 	top: 0;
+	height: inherit;
+	min-height: 85px;
 }
 
 /*
 	FOOTER
 */
 footer {
+	clear:both;
 	min-height: 2em;
+	max-height: 2em;
 	width: 100%;
 	background-color: rgb(66, 115, 178);
 	size: auto;
 	bottom: 0;
+	position: relative;
 }
+
 
 .footerText {
 	margin: 0.5em;
+	max-height: 2em;
 }
 /*
 	TOOLS
@@ -81,7 +90,7 @@ footer {
 	margin-top: 0;
 	margin-left: 2em;
 	padding: 0;
-	size: auto;
+	size: inherit;
 }
 
 .bannerTitle {
@@ -98,6 +107,7 @@ footer {
 .horizontalRepeatBlock {
 	min-height: 20px;
 	min-width: 5px;
+	display: block;
 	background-repeat: repeat-x;
 	margin: 0;
 	/* background-color: 0; */
@@ -110,6 +120,7 @@ div.bannerBox {
 	position: relative;
 	width: 100%;
 	height: inherit;
+	max-height: 5em;
 	background: transparent;
 	color: #000;
 	/* padding: 20px; */
@@ -139,3 +150,7 @@ a.divLink {
 	filter: alpha(opacity = 0);
 	/*workaround to make clickable in IE */
 }
+
+/*
+	HEADER BUTTON
+*/

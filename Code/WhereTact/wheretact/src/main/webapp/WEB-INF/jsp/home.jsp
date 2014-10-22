@@ -20,7 +20,7 @@
 		<h3 class="italic">The time on the server is ${serverTime}.</h3>
 
 		<a href="/sample">Link to sample</a> <br> 
-		<h4 id ="list">  <br>
+		<h4 id ="list"></h4>  <br>
 		<%-- <p>${randomUserInfo}</p> --%>
 		<br>
 		<%-- <p>${angularTestContacts}</p>
@@ -32,7 +32,7 @@
 		<h2>Test Contacts</h2>
 		<br>
 		<p>${myList}</p>
-		</h4>
+		
 	</div>
 
 </body>
