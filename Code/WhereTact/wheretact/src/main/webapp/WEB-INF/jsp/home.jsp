@@ -5,9 +5,11 @@
 <%@ include file="/WEB-INF/jsp/include/head.jsp"%>
 
 <%@ include file="/WEB-INF/jsp/include/header.jsp"%>
+
+
 <body>
 
-	<div class="bodyContent">
+	<div class="bodyContent">              
 		<br>
 		<h1>Where Tact Home</h1>
 		<br>
@@ -17,17 +19,20 @@
 		<br>
 		<h3 class="italic">The time on the server is ${serverTime}.</h3>
 
-		<a href="/sample">Link to sample</a> <br> <br>
+		<a href="/sample">Link to sample</a> <br> 
+		<h4 id ="list">  <br>
 		<%-- <p>${randomUserInfo}</p> --%>
 		<br>
 		<%-- <p>${angularTestContacts}</p>
 		<br>
+		
 		<p>${angularTestAddresses}</p> --%>
 		<br>
-
+		
 		<h2>Test Contacts</h2>
 		<br>
 		<p>${myList}</p>
+		</h4>
 	</div>
 
 </body>

@@ -9,14 +9,29 @@ html, h1, p, div {
 body {
     font-family: Verdana, Helvetica, sans-serif;
     background-color: #FFFFFF;
-    margin:0;
+    margin:10px 0;
     padding: 0;
+	text-align: center;
 }
 
 .bodyContent{
-	margin-left: 2em;
-	padding-top: 6em;
+background-color:silver;
+width:100%;
+float:left;
 }
+
+a.randomUserInfo{
+  background:red;
+    color:white;
+}
+
+#list{
+  background:black;
+    color:white;
+}
+
+
+
 
 /*
 	HEADER
