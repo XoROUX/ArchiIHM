@@ -31,4 +31,5 @@
 	</div>
 
 </body>
+<%@ include file="/WEB-INF/jsp/include/footer.jsp"%>
 </html>

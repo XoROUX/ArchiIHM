@@ -1,4 +1,4 @@
-html, h1, p, div {
+html, h1, p, div, body, header, footer {
 	margin:0;
 	padding: 0;
 }
@@ -9,8 +9,6 @@ html, h1, p, div {
 body {
     font-family: Verdana, Helvetica, sans-serif;
     background-color: #FFFFFF;
-    margin:0;
-    padding: 0;
 }
 
 .bodyContent{
@@ -22,8 +20,6 @@ body {
 	HEADER
 */
 header {
-	margin-left: 0em;
-	margin-top:0;
 	position:fixed;
 	width: 100%;
 	background-color: rgb(66, 115, 178);
@@ -31,6 +27,20 @@ header {
 	top: 0;
 }
 
+/*
+	FOOTER
+*/
+footer{
+	min-height: 2em;
+	width: 100%;
+	background-color: rgb(66, 115, 178);
+	size:auto;
+	bottom: 0;
+}
+
+.footerText{
+	margin: 0.5em;
+}
 /*
 	TOOLS
 */
