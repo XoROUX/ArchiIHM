@@ -10,31 +10,17 @@
 <body>
 
 	<div class="bodyContent">              
-		<br>
-		<h1>Where Tact Home</h1>
-		<br>
-		<h2>Contacts : ${totalContacts}</h2>
-		<br>
-		<h2>Addresses : ${totalAddresses}</h2>
-		<br>
-		<h3 class="italic">The time on the server is ${serverTime}.</h3>
+		<h2 id="nb">Contacts : ${totalContacts}		      Addresses : ${totalAddresses}</h2>
+		<h3 class="italic">Time on server is ${serverTime}.</h3>
 
-		<a href="/sample">Link to sample</a> <br> 
-		<h4 id ="list"></h4>  <br>
 		<%-- <p>${randomUserInfo}</p> --%>
-		<br>
 		<%-- <p>${angularTestContacts}</p>
 		<br>
-		
 		<p>${angularTestAddresses}</p> --%>
-		<br>
 		
-		<h2>Test Contacts</h2>
 		<br>
-		<p>${myList}</p>
-		
+		<p id="listContact">${myList}</p>
 	</div>
-
 </body>
 <%@ include file="/WEB-INF/jsp/include/footer.jsp"%>
 </html>

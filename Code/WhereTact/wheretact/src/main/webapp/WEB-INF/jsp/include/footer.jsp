@@ -1,8 +1,6 @@
 <footer>
 
 	<div class="bannerBox">
-		<p class="italic footerText">Copyright Claeys Emmanuelle, Dechelette Nicolas, Hewins Pierre</p>
-	
-		<a href="/home" class="divLink"></a>
+		<p class="italic footerText">Copyright Emmanuelle Claeys, Nicolas Dechelette, Pierre Hewins</p>
 	</div>
 </footer>

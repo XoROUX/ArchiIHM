@@ -181,10 +181,9 @@ public class Contact {
 
 	@Override
 	public String toString() {
-		return "<br><p>______________________________Contact___________________________________</p>"
-				+ "[<ul><li>contactId=" + contactId + "</li><li> phoneNumber=" + phoneNumber + "</li><li> email=" + email
+		return "Contact :<ul><li>contactId=" + contactId + "</li><li> phoneNumber=" + phoneNumber + "</li><li> email=" + email
 				+ "</li><li> firstname=" + firstname + ", lastname=" + lastname
-				+ "</li><li> birthdate=" + birthdate.toString() + "</ul>]";
+				+ "</li><li> birthdate=" + birthdate.toString() + "</li></ul>";
 	}	
 	
 }

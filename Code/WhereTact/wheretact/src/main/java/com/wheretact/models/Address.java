@@ -122,15 +122,15 @@ public class Address {
 		this.city = city;
 		this.postcode = postCode;
 		this.state = state;
-		this.country = country; 
+		this.country = country;
 	}
 	
 	
 	@Override
 	public String toString(){
 		
-		return "Address [<ul><li>contactId=" + contactId + "</li><li> addressId=" + addressId + "</li><li> Number=" + streetNumber+ ", street=" + street
-				+ "</li><li> postcode=" + postcode + ", city=" + city + "</li><li> country=" + country + ", state=" + state+ "</ul>]";
+		return "Address : <ul><li>contactId=" + contactId + "</li><li> addressId=" + addressId + "</li><li> Number=" + streetNumber+ ", street=" + street
+				+ "</li><li> postcode=" + postcode + ", city=" + city + "</li><li> country=" + country + ", state=" + state+ "</ul>";
 		
 	}
 	

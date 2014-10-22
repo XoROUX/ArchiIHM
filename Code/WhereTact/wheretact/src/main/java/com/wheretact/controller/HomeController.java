@@ -51,10 +51,10 @@ public class HomeController {
 		if(sampleAddresses != null && sampleAddresses.readAll() != null){
 			myList += "<p>__________ADDRESSES_________ </p>";
 			for(Address a : sampleAddresses.readAll()){
-				myList += "<br><p> " + a.toString() + " </p>";
+				myList += "<br><p class=\"adr\"> " + a.toString() + " </p>";
 			}
 			if(sampleAddresses.readAll().size() == 0){
-				myList += "<br><p> No addresses found in Address Mapping. </p>";
+				myList += "<br><p class=\"adr\"> No addresses found in Address Mapping. </p>";
 			}
 		}*/
 //		model.addAttribute("angularTestContacts", AngularDataProvider.convertContacts(sampleContacts.getMapping()));
@@ -68,24 +68,23 @@ public class HomeController {
 		else {
 			try {
 				for(Contact contact : contactList){
-					myList += "<div class=\"border\"><p>" + contact.toString() + "</p>";
-					myList += "<br><ul>";
+					myList += "<div class=\"border\"><div class=\"contact\">" + contact.toString() + "</div>";
 					
 					if(contact.getAddressList() != null && contact.getAddressList().size() > 0){
 						
 						for(Address a : contact.getAddressList().values()){
-							myList += "<li>" + a.toString() + "</li>";
+							myList += "<div class=\"address\">" + a.toString() + "</div>";
 						}
 					}
 						
 					else if(contact.getBillingAddress() != null){	
-						myList += "<li>" + contact.getBillingAddress().toString() + "</li>";
+						myList += "<div class=\"address\">" + contact.getBillingAddress().toString() + "</div>";
 					}
 					
 					else {
-						myList += "<li>Addresses : None found here.</li>";
+						myList += "<div class=\"address\">Addresses : None found here.</div>";
 					}
-					myList += "</ul><br></div>";
+					myList += "<br><hr><br></div>";
 					
 									
 				}
@@ -94,9 +93,6 @@ public class HomeController {
 				myList = "<p>" + "There was an error in the list" + "</p>";
 			}
 		}
-		
-			
-		myList += "</ul>";
 		
 		model.addAttribute("myList", myList);
 		/*
