@@ -13,9 +13,7 @@
 	ADDRESSES
 */
 .addressBox {
-	border: black solid 3px;
-	width: inherit;
-	word-wrap: normal;
+	
 }
 
 .addressTitle {

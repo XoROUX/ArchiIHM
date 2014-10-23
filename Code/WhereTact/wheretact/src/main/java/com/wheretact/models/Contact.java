@@ -9,17 +9,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
-
-/*
- * TO DO : 
- * 		-	Attributs Contact ok
- * 		-	Constructeur -> génère un randomUUID()! a verifier
- * 		-	Getters ok
- * 		-	Setters ok
- * 
- * 		-	Equals gné??
- */
-
 /**
  * Contact class
  * Contains all the information of a given contact.

@@ -18,24 +18,10 @@ import com.wheretact.business.WhereTactWebDAOInterface;
 import com.wheretact.models.Contact;
 
 
-/***
- * TO DO : 
- * 		-	Attributs ContactDAO - OK
- * 		-	Constructeur en singleton - OK
- * 		-	Getters - OK
- * 		-	Setters - OK
- * 		-	Create - OK
- * 		-	Read
- * 				ALL  - OK
- * 				HMap - OK
- * 				byId - OK
- * 		-	Update - OK
- * 		-	Delete - OK
- */
-
 /**
  * Class ContactDAO : Singleton class that manages all the contacts we will use
  * @author Pierre
+ * 
  *
  */
 public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
@@ -158,11 +144,8 @@ public class ContactDAO implements WhereTactWebDAOInterface<Contact> {
 	public List<Contact> readAll() {
 		try{
 			if(allContacts == null){
-				//System.out.println("RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 				return new ArrayList<Contact>();
 			}
-			//System.out.println("\n\n[ContactDAO][readAll] ******* "+allContacts.values()+"\n%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\n\n");
-
 
 			ArrayList<Contact> returnList = new ArrayList<Contact>();
 			for(Contact a : allContacts.values()){

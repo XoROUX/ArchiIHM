@@ -15,22 +15,6 @@ import com.wheretact.business.WhereTactWebDAOInterface;
 import com.wheretact.models.Address;
 import com.wheretact.models.Contact;
 
-
-/***
- * TO DO : 
- * 		-	Attributs AddressDAO - OK
- * 		-	Constructeur en singleton - OK
- * 		-	Getters - OK
- * 		-	Setters - OK
- * 		-	Create - OK
- * 		-	Read
- * 				ALL  - OK
- * 				byId - OK
- * 				HMap - OK
- * 		-	Update - OK
- * 		-	Delete - OK
- */
-
 /**
  * Class AddressDAO : Singleton class that manages all the addresses we will use
  * @author Pierre Manu
@@ -53,9 +37,6 @@ public class AddressDAO implements WhereTactWebDAOInterface<Address> {
 		validator = factory.getValidator();	
 		start();
 	}
-		
-	
-		
 		
 		
 	/**
@@ -90,8 +71,12 @@ public class AddressDAO implements WhereTactWebDAOInterface<Address> {
 					
 					linktoContact(contacts.getObjByID(contactId), newAddress, false);
 					
+					newAddress = new Address(contactId, UUID.randomUUID(), 0, "again", "again", "again", "again", "again");
+					createObject(newAddress);
+					
+					linktoContact(contacts.getObjByID(contactId), newAddress, false);
+					
 				} catch (Exception e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}

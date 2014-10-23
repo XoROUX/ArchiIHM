@@ -5,19 +5,6 @@ import java.util.UUID;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-
-/*
- * TO DO : 
- * 		-	Attributs Address OK
- * 		-	Constructeur -> génère un randomUUID()! (ok à verifier)
- * 		-	Getters  OK
- * 		-	Setters  OK
- * 		
- * 		-	Equals
- * 
- * v1 manu 08/10
- */
-
 /**
  * Address class
  * Contains all the information of a given address.

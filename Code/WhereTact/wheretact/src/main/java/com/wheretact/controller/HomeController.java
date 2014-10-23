@@ -1,20 +1,14 @@
 package com.wheretact.controller;
 
 import java.text.DateFormat;
-import java.util.ArrayList;
-//import java.util.Collection;
 import java.util.Date;
 import java.util.Locale;
-//import java.util.UUID;
-
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.wheretact.models.*;
 import com.wheretact.service.AddressService;
-//import com.wheretact.service.AngularDataProvider;
 import com.wheretact.service.ContactService;
 
 @Controller
@@ -26,19 +20,14 @@ public class HomeController {
 		/*
 		 * Affichage de la date dans la page, calcul de la l'heure actuelle (française)
 		 */
-		
 		Date date = new Date();
 		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		String formattedDate = dateFormat.format(date);
-
-//		Contact sampleContact = new Contact(UUID.randomUUID(), "date", "random@user.com", "Random", "User", 1337, null, null);
 		
 		model.addAttribute("serverTime", formattedDate );
-//		model.addAttribute("randomUserInfo", sampleContact.toString());
-		
+
 		ContactService sampleContacts = new ContactService();
 		AddressService sampleAddresses = new AddressService();
-		String myList = "";
 		
 		int totalContacts = sampleContacts.getMapping().size();
 		int totalAddresses = sampleAddresses.getMapping().size();
@@ -46,55 +35,6 @@ public class HomeController {
 		model.addAttribute("totalContacts", totalContacts );
 		model.addAttribute("totalAddresses", totalAddresses);
 		
-		/*
-		 * Liste des Addresses dans la mémoire (format test/debug)
-		if(sampleAddresses != null && sampleAddresses.readAll() != null){
-			myList += "<p>__________ADDRESSES_________ </p>";
-			for(Address a : sampleAddresses.readAll()){
-				myList += "<br><p class=\"adr\"> " + a.toString() + " </p>";
-			}
-			if(sampleAddresses.readAll().size() == 0){
-				myList += "<br><p class=\"adr\"> No addresses found in Address Mapping. </p>";
-			}
-		}*/
-//		model.addAttribute("angularTestContacts", AngularDataProvider.convertContacts(sampleContacts.getMapping()));
-//		model.addAttribute("angularTestAddresses", AngularDataProvider.convertAddresses(sampleAddresses.getMapping()));
-		
-		ArrayList<Contact> contactList = (ArrayList<Contact>) sampleContacts.readAll();
-		
-		if(sampleContacts.getMapping().values().size() == 0){
-			myList += "<p>No elements recieved from service </p>";
-		}
-		else {
-			try {
-				for(Contact contact : contactList){
-					myList += "<div class=\"border\"><div class=\"contact\">" + contact.toString() + "</div>";
-					
-					if(contact.getAddressList() != null && contact.getAddressList().size() > 0){
-						
-						for(Address a : contact.getAddressList().values()){
-							myList += "<div class=\"address\">" + a.toString() + "</div>";
-						}
-					}
-						
-					else if(contact.getBillingAddress() != null){	
-						myList += "<div class=\"address\">" + contact.getBillingAddress().toString() + "</div>";
-					}
-					
-					else {
-						myList += "<div class=\"address\">Addresses : None found here.</div>";
-					}
-					myList += "<br><hr><br></div>";
-					
-									
-				}
-	
-			}catch(Exception e){
-				myList = "<p>" + "There was an error in the list" + "</p>";
-			}
-		}
-		
-		model.addAttribute("myList", myList);
 		/*
 		 * GO TO home.jsp
 		 */
