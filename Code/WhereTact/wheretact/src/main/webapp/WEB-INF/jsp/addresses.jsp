@@ -11,7 +11,7 @@
 	<div class="bodyContent">
 		<div class="leftContent">
 
-			<a href="/contacts/formCreateAddress" class="">Add Address</a> <br>
+			<a href="/addresses/formCreateAddress" class="">Add Address</a> <br>
 			<table>
 				<thead>
 					<tr>

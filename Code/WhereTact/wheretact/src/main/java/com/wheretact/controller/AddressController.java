@@ -14,7 +14,7 @@ import com.wheretact.service.AddressService;
 public class AddressController {
 	
 	@RequestMapping(value="/addresses")
-	public String users(Locale locale, Model model){
+	public String addresses(Locale locale, Model model){
 		AddressService sampleAddresses = new AddressService();
 		ArrayList<Address> addressList = (ArrayList<Address>) sampleAddresses.readAll();
 		model.addAttribute("addressList", addressList);
@@ -22,14 +22,14 @@ public class AddressController {
 	}
 	
 	@RequestMapping(value="/addresses/{id}")
-	public String user(){
+	public String address(){
 		
 		return "adresse";
 	}
 
-	@RequestMapping(value="/addresses/new")
-	public String createUser(){
+	@RequestMapping(value="/addresses/formCreateAddress")
+	public String formCreateAddress(){
 		
-		return "createAdresse";
+		return "formCreateAddress";
 	}
 }

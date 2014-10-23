@@ -13,18 +13,19 @@ import com.wheretact.service.ContactService;
 public class ContactController {
 	
 	@RequestMapping(value="/contacts")
-	public String users(Locale locale, Model model){
+	public String contacts(Locale locale, Model model){
 		ContactService sampleContacts = new ContactService();
 		ArrayList<Contact> contactList = (ArrayList<Contact>) sampleContacts.readAll();
 		model.addAttribute("contactList", contactList);
 		return "contacts";
 	}
 	
+	/*
 	@RequestMapping(value="/contacts/{id}")
-	public String user(){
+	public String contact(){
 		
-		return "user";
-	}
+		return "contact";
+	}*/
 
 	@RequestMapping(value="/contacts/formCreateContact")
 	public String formCreateContact(){
