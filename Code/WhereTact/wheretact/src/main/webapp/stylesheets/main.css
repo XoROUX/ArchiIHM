@@ -230,6 +230,13 @@ a.divLink {
 }
 
 /*
+	MENU
+*/
+.menu.a{
+	float:right;
+}
+
+/*
 	FORM
 */
 form{
