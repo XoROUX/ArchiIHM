@@ -20,12 +20,12 @@ public class ContactController {
 		return "contacts";
 	}
 	
-	/*
+	
 	@RequestMapping(value="/contacts/{id}")
 	public String contact(){
 		
 		return "contact";
-	}*/
+	}
 
 	@RequestMapping(value="/contacts/formCreateContact")
 	public String formCreateContact(){

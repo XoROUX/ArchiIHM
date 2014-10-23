@@ -22,7 +22,7 @@
 				<%=String.valueOf(totalAddresses)%></h5>
 		</div>
 		
-		<a href="/home" class="divLink"></a>
+		<a href="/" class="divLink"></a>
 	</div>
 
 	<%@ include file="/WEB-INF/jsp/include/menu.jsp"%>

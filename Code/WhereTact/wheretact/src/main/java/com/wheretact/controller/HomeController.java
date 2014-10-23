@@ -14,7 +14,7 @@ import com.wheretact.service.ContactService;
 @Controller
 public class HomeController {
 
-	@RequestMapping(value="/home")
+	@RequestMapping(value="/")
 	public String home(Locale locale, Model model){
 		
 		/*
