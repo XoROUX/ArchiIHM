@@ -26,9 +26,9 @@ public class ContactController {
 		return "user";
 	}
 
-	@RequestMapping(value="/contacts/new")
-	public String createContact(){
+	@RequestMapping(value="/contacts/formCreateContact")
+	public String formCreateContact(){
 		
-		return "createContact";
+		return "formCreateContact";
 	}
 }

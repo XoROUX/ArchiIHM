@@ -7,14 +7,22 @@
 <%@ include file="/WEB-INF/jsp/include/head.jsp"%>
 <%@ include file="/WEB-INF/jsp/include/header.jsp"%>
 
-<%-- <script>
-	rowClick(<%=request.getAttribute("contact.contactId")%>);
-</script> --%>
+
+<!-- <script type="text/javascript" src="/js/show.js"></script> -->
+<script>
+	function rowClick(contactId){
+	
+       	alert(contactId+"AAAA");
+	}
+</script>
 
 <body>
 	<br>
 	<div class="bodyContent">
 		<div class="leftContent">
+			
+				<a href="/contacts/formCreateContact" class="">Add contact</a>
+			
 			<table>
 				<thead>
 					<tr>
@@ -29,7 +37,8 @@
 				<tbody>
 					<c:forEach items="${contactList}" var="contact">
 
-						<tr class="contactRow" id="${contact.contactId}">
+						<tr class="contactRow" id="${contact.contactId}"
+							onclick="rowClick(${contact.contactId})">
 
 							<td class="lastname">${contact.lastname}</td>
 							<td>${contact.firstname}</td>
@@ -50,10 +59,8 @@
 					<jsp:param name="firstname" value="Alban" />
 					<jsp:param name="lastname" value="Mani" />
 					<jsp:param name="email" value="Alban.Mani@mail.com" />
-					<jsp:param name="birthdate"
-						value="08/08/90" />
-					<jsp:param name="phonenumber"
-						value="0600000000" />
+					<jsp:param name="birthdate" value="08/08/90" />
+					<jsp:param name="phonenumber" value="0600000000" />
 				</jsp:include>
 			</div>
 		</div>

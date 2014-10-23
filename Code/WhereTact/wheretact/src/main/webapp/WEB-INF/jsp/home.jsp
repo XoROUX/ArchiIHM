@@ -22,12 +22,6 @@
 		<br>
 		<h1>Where Tact Home</h1>
 		<br>
-		
-		<br>
-		<h3 class="italic">The time on the server is ${serverTime}.</h3>
-
-		<a href="/sample">Link to sample</a> <br>
-		<br>
 
 		<%
 			if (contactArray.size() == 0) {
